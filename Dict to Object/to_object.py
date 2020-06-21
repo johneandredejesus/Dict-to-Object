@@ -4,7 +4,10 @@ class  Object(object):
       '''To convert dict recursively'''
       def __init__(self, value):
         '''value: dict or OrderedDict'''
-        self.__dict__ = self.__to_format_dict(value)
+        if value:
+            self.__dict__ = self.__to_format_dict(value)
+        else:
+            self.__dict__ = { }
         
       def __to_format_dict(self, dictvalue):
           _dict = { }
