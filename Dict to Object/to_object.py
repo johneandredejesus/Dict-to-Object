@@ -10,11 +10,8 @@ class  Object(object):
             self.__dict__ = { }
         
     def __to_format_dict(self, dictvalue):
-        _dict = { }
-        for key, value in dictvalue.items():
-            _dict[self.__to_format_key(key)] = self.__to_get_item_to_convert_to_object(value)
-        return _dict 
-      
+        return { self.__to_format_key(key) : self.__to_get_item_to_convert_to_object(value) for key, value in dictvalue.items() }
+         
     def __to_get_item_to_convert_to_object(self, value):
         if type(value) is list:
             return [ self.__to_get_item_to_convert_to_object(obj) for obj in value ]
